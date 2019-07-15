@@ -14,7 +14,7 @@ namespace Tests
         public void WhenThePencilIsPassedTextThenThePaperReflectsTheText()
         {
             var text = "test text";
-            var pencil = new Pencil();
+            var pencil = new Pencil(100);
             pencil.Write(text);
 
             Assert.AreEqual(text, pencil.Paper);
@@ -25,7 +25,7 @@ namespace Tests
         {
             var originalText = "She sells sea shells";
             var newText = " down by the sea shore";
-            var pencil = new Pencil();
+            var pencil = new Pencil(100);
             pencil.Paper = originalText;
             pencil.Write(newText);
 
@@ -57,5 +57,23 @@ namespace Tests
             Assert.AreEqual(2, pencil.PointDurability);
         }
 
+        [Test]
+        public void WhenthePencilWritestextThenThePointDurabilityDegradesByFour()
+        {
+            var pencil = new Pencil(4);
+            pencil.Write("text");
+
+            Assert.AreEqual(0, pencil.PointDurability);
+        }
+
+        [Test]
+        public void WhenthePencilWritesTextThenThePointDurabilityDegradesByFourAndPaperOnlyHasTex()
+        {
+            var pencil = new Pencil(4);
+            pencil.Write("Text");
+
+            Assert.AreEqual(0, pencil.PointDurability);
+            Assert.AreEqual("Tex", pencil.Paper);
+        }
     }
 }
