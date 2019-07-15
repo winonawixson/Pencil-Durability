@@ -75,5 +75,23 @@ namespace Tests
             Assert.AreEqual(0, pencil.PointDurability);
             Assert.AreEqual("Tex", pencil.Paper);
         }
+
+        [Test]
+        public void WhenThePencilWritesASpaceThenThePointDurabilityRemainsTheSame()
+        {
+            var pencil = new Pencil(3);
+            pencil.Write(" ");
+
+            Assert.AreEqual(3, pencil.PointDurability);
+        }
+
+        [Test]
+        public void WhenThePencilWritesANewLineThenThePointDurabilityRemainsTheSame()
+        {
+            var pencil = new Pencil(3);
+            pencil.Write("\n");
+
+            Assert.AreEqual(3, pencil.PointDurability);
+        }
     }
 }
