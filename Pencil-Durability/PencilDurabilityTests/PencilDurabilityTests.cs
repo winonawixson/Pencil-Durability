@@ -38,5 +38,14 @@ namespace Tests
             var pencil = new Pencil(10);
             Assert.AreEqual(10, pencil.PointDurability);
         }
+
+        [Test]
+        public void WhenThePencilWritesLowercaseLetterThenThePointDurabilityDegradesByOne()
+        {
+            var pencil = new Pencil(4);
+            pencil.Write("a");
+
+            Assert.AreEqual(3, pencil.PointDurability);
+        }
     }
 }

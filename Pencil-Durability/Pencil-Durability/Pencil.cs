@@ -16,6 +16,7 @@ namespace Pencil_Durability
 
         public void Write(string text)
         {
+            PointDurability--;
             Paper += text;
         }
 
