@@ -19,5 +19,17 @@ namespace Tests
 
             Assert.AreEqual(text, pencil.Paper);
         }
+
+        [Test]
+        public void WhenThePencilIsPassedTextTwiceThenThePaperShouldAppendTheText()
+        {
+            var text = "test text";
+            var text2 = " testing some more.";
+            var pencil = new Pencil();
+            pencil.Write(text);
+            pencil.Write(text2);
+
+            Assert.AreEqual(text + text2, pencil.Paper);
+        }
     }
 }
