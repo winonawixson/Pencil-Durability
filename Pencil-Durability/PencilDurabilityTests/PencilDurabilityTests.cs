@@ -140,11 +140,9 @@ namespace Tests
 
             Assert.AreNotEqual(25, pencil.PointDurability);
         }
-
         #endregion
 
         #region Erase
-
         [Test]
         public void WhenAPencilErasesTextTheLastOccurrenceIsReplacedWithSpaces()
         {
@@ -169,7 +167,15 @@ namespace Tests
             Assert.AreEqual("How much wood would a woodchuck chuck if a wood      could       wood?",
                 pencil.Paper);
         }
+        #endregion
 
+        #region Eraser Degradation
+        [Test]
+        public void WhenAPencilIsCreatedWithEraserDurabilityThenItHasEraserDurability()
+        {
+            var pencil = new Pencil(25, 3, 2);
+            Assert.AreEqual(2, pencil.EraserDurability);
+        }
 
 
         #endregion

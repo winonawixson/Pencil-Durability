@@ -10,6 +10,14 @@ namespace Pencil_Durability
             Length = length;
         }
 
+        public Pencil(int pointDurability, int length, int eraserDurability)
+        {
+            InitialPointDurability = pointDurability;
+            PointDurability = pointDurability;
+            Length = length;
+            EraserDurability = eraserDurability;
+        }
+
         public string Paper { get; set; }
 
         public void Write(string text)
@@ -61,5 +69,7 @@ namespace Pencil_Durability
             var result = Paper.Remove(location, text.Length).Insert(location, spaces);
             Paper = result;
         }
+
+        public int EraserDurability { get; set; }
     }
 }
