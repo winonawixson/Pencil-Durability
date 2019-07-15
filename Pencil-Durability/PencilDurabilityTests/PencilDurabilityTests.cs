@@ -177,6 +177,16 @@ namespace Tests
             Assert.AreEqual(2, pencil.EraserDurability);
         }
 
+        [Test]
+        public void WhenAPencilErasesALetterThenTheEraserDurabilityDecreasesByOne()
+        {
+            var pencil = new Pencil(25, 3, 2);
+            pencil.Write("test");
+            pencil.Erase("t");
+
+            Assert.AreEqual(1, pencil.EraserDurability);
+        }
+
 
         #endregion
     }

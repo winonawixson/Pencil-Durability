@@ -62,12 +62,15 @@ namespace Pencil_Durability
             {
                 spaces += " ";
             }
+
             var location = Paper.LastIndexOf(text);
             if (location == -1) //text not found
                 return;
 
             var result = Paper.Remove(location, text.Length).Insert(location, spaces);
             Paper = result;
+
+            EraserDurability -= text.Length;
         }
 
         public int EraserDurability { get; set; }
