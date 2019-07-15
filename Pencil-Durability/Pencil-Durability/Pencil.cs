@@ -3,14 +3,11 @@ namespace Pencil_Durability
 {
     public class Pencil
     {
-        public Pencil()
-        {
-        }
-
-        public Pencil(int pointDurability)
+        public Pencil(int pointDurability, int length)
         {
             InitialPointDurability = pointDurability;
             PointDurability = pointDurability;
+            Length = length;
         }
 
         public string Paper { get; set; }
@@ -42,6 +39,9 @@ namespace Pencil_Durability
         public void Sharpen()
         {
             PointDurability = InitialPointDurability;
+            Length--;
         }
+
+        public int Length { get; set; }
     }
 }
