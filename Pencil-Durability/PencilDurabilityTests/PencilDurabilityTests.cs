@@ -131,6 +131,16 @@ namespace Tests
             Assert.AreEqual(2, pencil.Length);
         }
 
+        [Test]
+        public void WhenThePencilHasLengthZeroSharpeningThePencilDoesNotRestorePointDurability()
+        {
+            var pencil = new Pencil(25, 0);
+            pencil.Write("la dee da de da");
+            pencil.Sharpen();
+
+            Assert.AreNotEqual(25, pencil.PointDurability);
+        }
+
         #endregion
     }
 }

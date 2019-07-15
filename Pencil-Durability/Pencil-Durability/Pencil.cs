@@ -38,8 +38,11 @@ namespace Pencil_Durability
 
         public void Sharpen()
         {
-            PointDurability = InitialPointDurability;
-            Length--;
+            if(Length > 0)
+            {
+                PointDurability = InitialPointDurability;
+                Length--;
+            }            
         }
 
         public int Length { get; set; }
