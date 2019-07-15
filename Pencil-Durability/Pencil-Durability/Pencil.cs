@@ -38,5 +38,10 @@ namespace Pencil_Durability
         public int PointDurability { get; set; }
 
         public int InitialPointDurability { get; set; }
+
+        public void Sharpen()
+        {
+            PointDurability = InitialPointDurability;
+        }
     }
 }

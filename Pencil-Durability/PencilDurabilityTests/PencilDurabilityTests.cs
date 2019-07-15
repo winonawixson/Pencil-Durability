@@ -105,6 +105,16 @@ namespace Tests
             Assert.AreEqual(25, pencil.InitialPointDurability);
         }
 
+        [Test]
+        public void WhenThePencilIsSharpenedItRegainsItsInitialPointDurability()
+        {
+            var pencil = new Pencil(25);
+            pencil.Write("la de da dee daa");
+
+            pencil.Sharpen();
+            Assert.AreEqual(25, pencil.PointDurability);
+        }
+
 
         #endregion
     }
