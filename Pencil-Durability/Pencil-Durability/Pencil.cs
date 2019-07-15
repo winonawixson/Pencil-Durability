@@ -9,6 +9,7 @@ namespace Pencil_Durability
 
         public Pencil(int pointDurability)
         {
+            InitialPointDurability = pointDurability;
             PointDurability = pointDurability;
         }
 
@@ -35,5 +36,7 @@ namespace Pencil_Durability
         }
 
         public int PointDurability { get; set; }
+
+        public int InitialPointDurability { get; set; }
     }
 }

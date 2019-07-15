@@ -9,7 +9,7 @@ namespace Tests
         public void Setup()
         {
         }
-
+        #region Write
         [Test]
         public void WhenThePencilIsPassedTextThenThePaperReflectsTheText()
         {
@@ -31,7 +31,9 @@ namespace Tests
 
             Assert.AreEqual(originalText + newText, pencil.Paper);
         }
+        #endregion
 
+        #region Point Durability
         [Test]
         public void WhenThePencilIsCreatedWithAPointDurabilityThenItHasThatPointDurability()
         {
@@ -93,5 +95,17 @@ namespace Tests
 
             Assert.AreEqual(3, pencil.PointDurability);
         }
+        #endregion
+
+        #region Sharpen
+        [Test]
+        public void WhenThePencilIsCreatedItHasAnInitialPointDurability()
+        {
+            var pencil = new Pencil(25);
+            Assert.AreEqual(25, pencil.InitialPointDurability);
+        }
+
+
+        #endregion
     }
 }
