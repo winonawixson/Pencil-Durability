@@ -142,5 +142,24 @@ namespace Tests
         }
 
         #endregion
+
+        #region Erase
+
+        [Test]
+        public void WhenAPencilErasesTextTheLastOccurrenceIsReplacedWithSpaces()
+        {
+            var pencil = new Pencil(250, 3);
+            pencil.Write("How much wood would a woodchuck chuck if a woodchuck could chuck wood?");
+
+            pencil.Erase("chuck");
+
+            Assert.AreEqual("How much wood would a woodchuck chuck if a woodchuck could       wood?",
+                pencil.Paper);
+        }
+
+
+
+
+        #endregion
     }
 }

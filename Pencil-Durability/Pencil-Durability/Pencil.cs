@@ -46,5 +46,20 @@ namespace Pencil_Durability
         }
 
         public int Length { get; set; }
+
+        public void Erase(string text)
+        {
+            var spaces = "";
+            for(var i = 0; i < text.Length; i++)
+            {
+                spaces += " ";
+            }
+            var location = Paper.LastIndexOf(text);
+            if (location == -1) //text not found
+                return;
+
+            var result = Paper.Remove(location, text.Length).Insert(location, spaces);
+            Paper = result;
+        }
     }
 }

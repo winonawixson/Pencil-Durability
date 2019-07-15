@@ -6,4 +6,7 @@
     <RootNamespace>Pencil_Durability</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="GlobalSuppressions.cs" />
+  </ItemGroup>
 </Project>
