@@ -47,5 +47,15 @@ namespace Tests
 
             Assert.AreEqual(3, pencil.PointDurability);
         }
+
+        [Test]
+        public void WhenThePencilWritesUppercaseLetterThenThePointDurabilityDegradesByTwo()
+        {
+            var pencil = new Pencil(4);
+            pencil.Write("A");
+
+            Assert.AreEqual(2, pencil.PointDurability);
+        }
+
     }
 }

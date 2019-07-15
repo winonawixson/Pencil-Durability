@@ -16,7 +16,18 @@ namespace Pencil_Durability
 
         public void Write(string text)
         {
-            PointDurability--;
+            foreach(var letter in text.ToCharArray())
+            {
+                if (char.IsUpper(letter))
+                {
+                    PointDurability = PointDurability - 2;
+                }
+                else if (char.IsLower(letter))
+                {
+                    PointDurability--;
+                }
+            }
+
             Paper += text;
         }
 
