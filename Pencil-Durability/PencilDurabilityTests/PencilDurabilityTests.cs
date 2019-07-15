@@ -157,6 +157,18 @@ namespace Tests
                 pencil.Paper);
         }
 
+        [Test]
+        public void WhenAPencilErasesTextTwiceTheLastTwoOccurrencesAreReplacedWithSpaces()
+        {
+            var pencil = new Pencil(250, 3);
+            pencil.Write("How much wood would a woodchuck chuck if a woodchuck could chuck wood?");
+
+            pencil.Erase("chuck");
+            pencil.Erase("chuck");
+
+            Assert.AreEqual("How much wood would a woodchuck chuck if a wood      could       wood?",
+                pencil.Paper);
+        }
 
 
 
