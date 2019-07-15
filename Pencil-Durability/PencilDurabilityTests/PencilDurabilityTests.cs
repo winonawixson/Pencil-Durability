@@ -146,7 +146,7 @@ namespace Tests
         [Test]
         public void WhenAPencilErasesTextTheLastOccurrenceIsReplacedWithSpaces()
         {
-            var pencil = new Pencil(250, 3);
+            var pencil = new Pencil(250, 3, 200);
             pencil.Write("How much wood would a woodchuck chuck if a woodchuck could chuck wood?");
 
             pencil.Erase("chuck");
@@ -158,7 +158,7 @@ namespace Tests
         [Test]
         public void WhenAPencilErasesTextTwiceTheLastTwoOccurrencesAreReplacedWithSpaces()
         {
-            var pencil = new Pencil(250, 3);
+            var pencil = new Pencil(250, 3, 200);
             pencil.Write("How much wood would a woodchuck chuck if a woodchuck could chuck wood?");
 
             pencil.Erase("chuck");
@@ -185,6 +185,17 @@ namespace Tests
             pencil.Erase("t");
 
             Assert.AreEqual(1, pencil.EraserDurability);
+        }
+
+        [Test]
+        public void WhenTheEraserDurabilityHitsZeroThenTheEraserStopsErasing()
+        {
+            var pencil = new Pencil(25, 3, 3);
+            pencil.Write("Buffalo Bill");
+            pencil.Erase("Bill");
+
+            Assert.AreEqual("Buffalo B   ", pencil.Paper);
+            Assert.AreEqual(0, pencil.EraserDurability);
         }
 
 

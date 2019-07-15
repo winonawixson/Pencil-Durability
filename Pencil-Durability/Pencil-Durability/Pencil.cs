@@ -57,8 +57,13 @@ namespace Pencil_Durability
 
         public void Erase(string text)
         {
+            if (EraserDurability < text.Length)
+            {
+                text = text.Substring(text.Length - EraserDurability);
+            }
+
             var spaces = "";
-            for(var i = 0; i < text.Length; i++)
+            for (var i = 0; i < text.Length; i++)
             {
                 spaces += " ";
             }
