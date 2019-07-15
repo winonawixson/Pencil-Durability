@@ -7,11 +7,18 @@ namespace Pencil_Durability
         {
         }
 
+        public Pencil(int pointDurability)
+        {
+            PointDurability = pointDurability;
+        }
+
         public string Paper { get; set; }
 
         public void Write(string text)
         {
             Paper += text;
         }
+
+        public int PointDurability { get; set; }
     }
 }

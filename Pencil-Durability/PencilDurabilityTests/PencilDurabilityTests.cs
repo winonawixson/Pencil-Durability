@@ -21,15 +21,22 @@ namespace Tests
         }
 
         [Test]
-        public void WhenThePencilIsPassedTextTwiceThenThePaperShouldAppendTheText()
+        public void WhenThePaperHasTextAndThePencilIsPassedMoreTextThenTheNewTextIsAppended()
         {
-            var text = "test text";
-            var text2 = " testing some more.";
+            var originalText = "She sells sea shells";
+            var newText = " down by the sea shore";
             var pencil = new Pencil();
-            pencil.Write(text);
-            pencil.Write(text2);
+            pencil.Paper = originalText;
+            pencil.Write(newText);
 
-            Assert.AreEqual(text + text2, pencil.Paper);
+            Assert.AreEqual(originalText + newText, pencil.Paper);
+        }
+
+        [Test]
+        public void WhenThePencilIsCreatedWithAPointDurabilityThenItHasThatPointDurability()
+        {
+            var pencil = new Pencil(10);
+            Assert.AreEqual(10, pencil.PointDurability);
         }
     }
 }
