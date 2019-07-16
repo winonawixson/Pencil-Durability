@@ -5,10 +5,6 @@ namespace Tests
 {
     public class PencilDurabilityTests
     {
-        [SetUp]
-        public void Setup()
-        {
-        }
         #region Write
         [Test]
         public void WhenThePencilIsPassedTextThenThePaperReflectsTheText()
@@ -232,7 +228,6 @@ namespace Tests
 
             Assert.AreEqual("An artich@k@ay keeps the doctor away", pencil.Paper);
         }
-
         #endregion
     }
 }

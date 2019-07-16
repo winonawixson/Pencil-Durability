@@ -1,5 +1,4 @@
-﻿using System;
-namespace Pencil_Durability
+﻿namespace Pencil_Durability
 {
     public class Pencil
     {
@@ -66,11 +65,11 @@ namespace Pencil_Durability
 
             var spacesText = GetStringOfSpacesForTextLength(text);
 
-            var location = Paper.LastIndexOf(text);
+            var location = Paper.LastIndexOf(text, System.StringComparison.Ordinal);
             if (location == -1) //text not found
                 return;
 
-            Paper = Paper.Remove(location, text.Length).Insert(location, spacesText);
+            Paper = ReplaceTextAtLocation(Paper, location, spacesText);
 
             EraserDurability -= textLengthWithoutSpaces;
         }
@@ -79,16 +78,12 @@ namespace Pencil_Durability
 
         public void Edit(string newText)
         {
-            var location = Paper.IndexOf("  ");
+            var location = Paper.IndexOf("  ", System.StringComparison.Ordinal);
             if (location == -1) //text not found
                 return;
 
             var stringAtLocation = Paper.Substring(location + 1, newText.Length);
-            if(string.IsNullOrWhiteSpace(stringAtLocation))
-            {
-                Paper = Paper.Remove(location + 1, newText.Length).Insert(location + 1, newText);
-            }
-            else
+            if(!string.IsNullOrWhiteSpace(stringAtLocation))
             {
                 var charArray = Paper.ToCharArray();
 
@@ -107,8 +102,10 @@ namespace Pencil_Durability
                     }
                 }
 
-                Paper = Paper.Remove(location + 1, finalNewText.Length).Insert(location + 1, finalNewText);
+                newText = finalNewText;
             }
+
+            Paper = ReplaceTextAtLocation(Paper, location + 1, newText);
         }
 
 
@@ -119,13 +116,12 @@ namespace Pencil_Durability
 
         private string GetStringOfSpacesForTextLength(string text)
         {
-            var spaces = "";
-            for (var i = 0; i < text.Length; i++)
-            {
-                spaces += " ";
-            }
+            return string.Empty.PadRight(text.Length);
+        }
 
-            return spaces;
+        private string ReplaceTextAtLocation(string originalText, int location, string newText)
+        {
+            return originalText.Remove(location, newText.Length).Insert(location, newText);
         }
     }
 }
