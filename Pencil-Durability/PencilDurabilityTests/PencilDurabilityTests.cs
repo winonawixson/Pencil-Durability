@@ -208,6 +208,19 @@ namespace Tests
             Assert.AreEqual("Buffalo Bill", pencil.Paper);
             Assert.AreEqual(3, pencil.EraserDurability);
         }
+        #endregion
+
+        #region Editing
+        [Test]
+        public void WhenThePencilEditsItReplacesSpacesWithTheNewText()
+        {
+            var pencil = new Pencil(250, 3, 20);
+            pencil.Write("An apple a day keeps the doctor away");
+            pencil.Erase("apple");
+            pencil.Edit("onion");
+
+            Assert.AreEqual("An onion a day keeps the doctor away", pencil.Paper);
+        }
 
         #endregion
     }

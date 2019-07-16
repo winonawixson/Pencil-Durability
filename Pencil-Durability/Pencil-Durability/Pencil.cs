@@ -77,6 +77,20 @@ namespace Pencil_Durability
 
         public int EraserDurability { get; set; }
 
+        public void Edit(string newText)
+        {
+            var location = Paper.IndexOf("  ");
+            if (location == -1) //text not found
+                return;
+
+            var stringAtLocation = Paper.Substring(location + 1, newText.Length);
+            if(string.IsNullOrWhiteSpace(stringAtLocation))
+            {
+                Paper = Paper.Remove(location + 1, newText.Length).Insert(location + 1, newText);
+            }
+        }
+
+
         private int GetStringLengthWithoutSpaces(string text)
         {
             return text.Replace(" ", "").Length;
