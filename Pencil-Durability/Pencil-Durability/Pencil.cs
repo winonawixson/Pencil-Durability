@@ -88,6 +88,27 @@ namespace Pencil_Durability
             {
                 Paper = Paper.Remove(location + 1, newText.Length).Insert(location + 1, newText);
             }
+            else
+            {
+                var charArray = Paper.ToCharArray();
+
+                var finalNewText = "";
+
+                for (int i = 0; i < newText.Length; i++)
+                {
+                    var indexOnPaper = i + location + 1;
+                    var charAtIndex = charArray[indexOnPaper];
+                    if (charAtIndex == ' ')
+                    {
+                        finalNewText += newText.Substring(i, 1);
+                    } else
+                    {
+                        finalNewText += "@";
+                    }
+                }
+
+                Paper = Paper.Remove(location + 1, finalNewText.Length).Insert(location + 1, finalNewText);
+            }
         }
 
 

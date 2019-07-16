@@ -222,6 +222,17 @@ namespace Tests
             Assert.AreEqual("An onion a day keeps the doctor away", pencil.Paper);
         }
 
+        [Test]
+        public void WhenEditingAndTheNewTextIsLongerThanTheWhitespaceThenTheCharacterCollisionsAreReplacedWithASymbol()
+        {
+            var pencil = new Pencil(250, 3, 20);
+            pencil.Write("An apple a day keeps the doctor away");
+            pencil.Erase("apple");
+            pencil.Edit("artichoke");
+
+            Assert.AreEqual("An artich@k@ay keeps the doctor away", pencil.Paper);
+        }
+
         #endregion
     }
 }
