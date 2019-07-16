@@ -57,29 +57,40 @@ namespace Pencil_Durability
 
         public void Erase(string text)
         {
-            var textLengthWithoutSpaces = text.Replace(" ", "").Length;
+            var textLengthWithoutSpaces = GetStringLengthWithoutSpaces(text);
             if (EraserDurability < textLengthWithoutSpaces)
             {
                 text = text.Substring(text.Length - EraserDurability);
-                textLengthWithoutSpaces = text.Replace(" ", "").Length;
+                textLengthWithoutSpaces = GetStringLengthWithoutSpaces(text);
             }
 
+            var spacesText = GetStringOfSpacesForTextLength(text);
+
+            var location = Paper.LastIndexOf(text);
+            if (location == -1) //text not found
+                return;
+
+            Paper = Paper.Remove(location, text.Length).Insert(location, spacesText);
+
+            EraserDurability -= textLengthWithoutSpaces;
+        }
+
+        public int EraserDurability { get; set; }
+
+        private int GetStringLengthWithoutSpaces(string text)
+        {
+            return text.Replace(" ", "").Length;
+        }
+
+        private string GetStringOfSpacesForTextLength(string text)
+        {
             var spaces = "";
             for (var i = 0; i < text.Length; i++)
             {
                 spaces += " ";
             }
 
-            var location = Paper.LastIndexOf(text);
-            if (location == -1) //text not found
-                return;
-
-            var result = Paper.Remove(location, text.Length).Insert(location, spaces);
-            Paper = result;
-
-            EraserDurability -= textLengthWithoutSpaces;
+            return spaces;
         }
-
-        public int EraserDurability { get; set; }
     }
 }
