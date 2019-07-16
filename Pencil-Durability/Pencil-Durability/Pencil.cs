@@ -57,9 +57,11 @@ namespace Pencil_Durability
 
         public void Erase(string text)
         {
-            if (EraserDurability < text.Length)
+            var textLengthWithoutSpaces = text.Replace(" ", "").Length;
+            if (EraserDurability < textLengthWithoutSpaces)
             {
                 text = text.Substring(text.Length - EraserDurability);
+                textLengthWithoutSpaces = text.Replace(" ", "").Length;
             }
 
             var spaces = "";
@@ -75,7 +77,7 @@ namespace Pencil_Durability
             var result = Paper.Remove(location, text.Length).Insert(location, spaces);
             Paper = result;
 
-            EraserDurability -= text.Length;
+            EraserDurability -= textLengthWithoutSpaces;
         }
 
         public int EraserDurability { get; set; }
